@@ -51,7 +51,8 @@ void Key_GPIO_Config(void)
 	printf("\rButton_Last_Level:%d",Button_Last_Level);
 }
 
- /*
+#if 0
+ /* 
  * 函数名：Key_Scan
  * 描述  ：检测是否有按键按下
  * 输入  ：GPIOx：x 可以是 A，B，C，D或者 E
@@ -110,6 +111,7 @@ uint8_t Key_Scan3(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin)
 	else
 		return KEY_UP;
 }
+#endif
 
 /**************************************************************************
 函数：	

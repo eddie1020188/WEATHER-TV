@@ -3,6 +3,7 @@
 extern volatile unsigned int TIM6_TIMING_FLAG ;//TIM6定时器标志
 extern  const unsigned char gImage_2[] ;
 extern ZHIXIN ZHIXIN_DATA;
+extern uint8_t Button_Trigger_Event;
 #define NEED_WIFI 0 //本实验中是否需要WIFI
 /*实验  ： 流水灯 LED1*/
 int main(void)
@@ -30,11 +31,19 @@ int main(void)
 
 	while(1)
 	{
-		printf("THIS IS A TEST\r\n");
+
     if( TIM6_TIMING_FLAG&TIM6TIMINGFlag_25ms)          //25ms任务时间到
     {
-         TIM6_TIMING_FLAG&=(~TIM6TIMINGFlag_25ms);          //清除标志位
+        TIM6_TIMING_FLAG&=(~TIM6TIMINGFlag_25ms);          //清除标志位
         Key_Scan4();
+			  if(Button_Trigger_Event ==  BUTTON_LONG ){
+        WIFI_WEATHER_Init();
+				}
+				else if(Button_Trigger_Event ==  BUTTON_DOWM)
+				{
+				LED1_FZ;
+				LED2_FZ;
+				}
     }
 	}
 	

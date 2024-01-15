@@ -34,8 +34,20 @@
  }
 
 
+/*
+    函数 ：void GPIO_TOGGLEBITS(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+    功能 ：F1没有反转电平的函数 写一下
+    参数 ：
+  返回值 ：
+    备注 ：
+*/
 
 
+void GPIO_TOGGLEBITS(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+{
+  /* Check the parameters */
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+  assert_param(IS_GPIO_PIN(GPIO_Pin));
 
-
-
+	GPIOx->BRR ^= GPIO_Pin;
+}

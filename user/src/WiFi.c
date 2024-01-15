@@ -1,7 +1,7 @@
 #include "main.h"
 
-#define IPHONE 1
-#define HOME   0
+#define IPHONE 0
+#define HOME   1
 #if HOME
 #define WiFi_SSID   "Xiaomi_BB25"
 #define WiFi_PWD    "sjw110807xqz"
