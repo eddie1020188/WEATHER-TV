@@ -1,40 +1,41 @@
 #include "main.h"
 
-extern volatile unsigned int TIM6_TIMING_FLAG ;//TIM6¶¨Ê±Æ÷±êÖ¾
+extern volatile unsigned int TIM6_TIMING_FLAG ;//TIM6ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ö¾
 extern  const unsigned char gImage_2[] ;
 extern ZHIXIN ZHIXIN_DATA;
 extern uint8_t Button_Trigger_Event;
-#define NEED_WIFI 0 //±¾ÊµÑéÖÐÊÇ·ñÐèÒªWIFI
-/*ÊµÑé  £º Á÷Ë®µÆ LED1*/
+#define NEED_WIFI 0 //ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ÒªWIFI
+/*Êµï¿½ï¿½  ï¿½ï¿½ ï¿½ï¿½Ë®ï¿½ï¿½ LED1*/
+//ä½ å¥½ä¸–ç•Œï¼
 int main(void)
 {
  NVIC_PriorityGroupConfig (NVIC_PriorityGroup_2);
 	
 	#if NEED_WIFI
-	//WIFI³õÊ¼»¯´úÂë
+	//WIFIï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	WIFI_WEATHER_Init();
 	#endif
 	
-	//LED³õÊ¼»¯´úÂë
+	//LEDï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	LED_INIT();
-	//¶¨Ê±Æ÷³õÊ¼»¯´úÂë
+	//ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   SysTick_Init(72);
-	//UART³õÊ¼»¯´úÂë
+	//UARTï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	UART1_INIT(115200);
-	//°´¼ü³õÊ¼»¯´úÂë
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	Key_GPIO_Config();
-  //TIM6³õÊ¼»¯´úÂë + TIM6ÖÐ¶Ï
+  //TIM6ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ + TIM6ï¿½Ð¶ï¿½
 	Timer6_Init();
-  //LCD³õÊ¼»¯´úÂë
+  //LCDï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	LCD_Init();
   
 
 	while(1)
 	{
 
-    if( TIM6_TIMING_FLAG&TIM6TIMINGFlag_25ms)          //25msÈÎÎñÊ±¼äµ½
+    if( TIM6_TIMING_FLAG&TIM6TIMINGFlag_25ms)          //25msï¿½ï¿½ï¿½ï¿½Ê±ï¿½äµ½
     {
-        TIM6_TIMING_FLAG&=(~TIM6TIMINGFlag_25ms);          //Çå³ý±êÖ¾Î»
+        TIM6_TIMING_FLAG&=(~TIM6TIMINGFlag_25ms);          //ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾Î»
         Key_Scan4();
 			  if(Button_Trigger_Event ==  BUTTON_LONG ){
         WIFI_WEATHER_Init();
