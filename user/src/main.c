@@ -7,6 +7,7 @@ extern uint8_t Button_Trigger_Event;
 #define NEED_WIFI 0 //��ʵ�����Ƿ���ҪWIFI
 /*ʵ��  �� ��ˮ�� LED1*/
 //你好世界！
+//你好新分支！
 int main(void)
 {
  NVIC_PriorityGroupConfig (NVIC_PriorityGroup_2);
