@@ -8,6 +8,7 @@ extern uint8_t Button_Trigger_Event;
 /*ʵ��  �� ��ˮ�� LED1*/
 //你好世界！
 //你好新分支！
+//嘿嘿嘿
 int main(void)
 {
  NVIC_PriorityGroupConfig (NVIC_PriorityGroup_2);
